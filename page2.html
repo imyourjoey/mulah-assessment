@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Mobile Page</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="index-styles.css">
+
+
+</head>
+<body>
+
+    <div class="container">
+      
+      <div class="row mt-5">
+        <div class="col d-flex align-items-center justify-content-center">
+          <h1 class="header mulah-color" style="font-size: 50px;">MULAH</h1>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+          <h1>Registration</h1>
+          <p><i>Please Fill up you details.</i></p>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col">
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+              <div class="invalid-feedback d-block"><i>*Please insert a name.</i> </div>
+            </div>
+
+            <div class="row mb-3">
+
+              
+              <div class="row">
+                <label for="birthday">Birthday</label>
+              </div>
+              <div class="col-3">
+                
+                <input type="number" class="form-control" id="day" name="day" placeholder="DD" required>
+                
+              </div>
+              <div class="col-3">
+                <input type="number" class="form-control" id="month" name="month" placeholder="MM" required>
+              </div>
+              <div class="col-6">
+                <input type="number" class="form-control" id="year" name="year" placeholder="YYYY" required>
+              </div>
+
+              <div class="row">
+                <div class="invalid-feedback d-block"><i>*Please insert your birthday.</i> </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+
+              <div class="invalid-feedback d-block"><i>*Please insert a valid email address.</i> </div>
+            </div>
+
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="noEmail" name="noEmail">
+              <label class="form-check-label text-muted" for="noEmail" style="font-size: 13px;">
+              <i>No email address</i>
+              </label>
+            </div>
+
+            <div class="row">
+
+              <div class="col">
+                <input type="hidden" id="combinedNumber" name="combinedNumber" value="{{combinedNumber}}">
+                <button type="button" class="btn btn-primary rounded-3 w-100" onclick="navigateToPage3()">Continue</button>
+              </div>
+              
+            </div>
+          </form>
+
+
+          <hr class="mt-4" style="margin-top: 10px; border-top: 2px solid gray;">
+
+          <div class="row">
+
+            <div class="col d-flex align-items-center justify-content-center">
+              <p class="text-muted">Powered by <a href="mulahrewards.com">MulahRewards.com</a> </p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      
+</div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+<script>
+  // Function to extract parameters from the URL
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+
+  // Function to navigate to page 3
+function navigateToPage3() {
+    // Get the parameters from the URL
+    var combinedNumber = getParameterByName('combinedNumber');
+    var name = document.getElementById('name').value;
+    var day = document.getElementById('day').value;
+    var month = document.getElementById('month').value;
+    var year = document.getElementById('year').value;
+    var email = document.getElementById('email').value;
+
+    // Replace %40 with @ in the email address
+    email = email.replace(/%40/g, '@');
+
+    // Construct the URL for page3.html with all the parameters
+    var nextPageURL = "page3.html?combinedNumber=" + combinedNumber +
+                      "&name=" + encodeURIComponent(name) +
+                      "&day=" + encodeURIComponent(day) +
+                      "&month=" + encodeURIComponent(month) +
+                      "&year=" + encodeURIComponent(year) +
+                      "&email=" + email;
+
+    // Navigate to the next page
+    window.location.href = nextPageURL;
+}
+
+</script>
+
+</html>
+
+
+

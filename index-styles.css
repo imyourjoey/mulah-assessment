@@ -1,0 +1,17 @@
+.header{
+  font-weight: 1000;
+}
+
+
+.mulah-color{
+  color: #f6810c;
+  
+}
+
+
+
+.btn-primary,
+.btn-primary:hover {
+    background-color: #f6810c; /* Change this color to your desired color */
+    border-color: #f6810c; /* Change this color to your desired color */
+}
